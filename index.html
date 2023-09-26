@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nl-be">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex | René Van Asch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/pokeball icon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <header>
+
+        <a href="./index.html">
+            <div class="logo">
+                <img src="./assets/pokemon-logo.png" alt="logo" class="Sonic-Logo-tab"
+                    height="100px" />
+                <span class="logo-text">Pokedex</span>
+            </div>
+        </a>
+
+        <div class="social-media">
+            <a href="https://www.instagram.com/rene.jr.va/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100085698847902" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://github.com/ReneJrVA" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.tiktok.com/@renepuree" target="_blank">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h2>Learn all about the pokemon in the pokedex</h2>
+
+        <div class="modal" id="modal" onclick="hideModal()">
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+
+        <div class="main-content" id="main-content"></div>
+        <div class="buttons">
+            <button id="back-button" disabled>Back</button>
+            <button id="next-button" disabled>Next</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="footer-logo">Pokedex</p>
+        <p class="copyrigth">Developed by &copy; René Van Asch</p>
+    </footer>
+
+
+    <script src="https://kit.fontawesome.com/bb92b54292.js" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

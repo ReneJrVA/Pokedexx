@@ -1,0 +1,149 @@
+let currentPageUrl = '	https://pokeapi.co/api/v2/pokemon/'
+
+window.onload = async () => {
+    try {
+        await loadPokemon(currentPageUrl);
+    } catch {
+        (error)
+        console.log(error);
+        alert('Error loading the cards')
+    }
+
+    const nextButton = document.getElementById('next-button')
+    const backButton = document.getElementById('back-button')
+
+    nextButton.addEventListener('click', loadNextPage)
+    backButton.addEventListener('click', loadPreviousPage)
+}
+
+async function loadPokemon(url) {
+    const mainContent = document.getElementById('main-content')
+    mainContent.innerHTML = ''; // gaat de vorige resultaten schoonmaken.
+
+    try {
+        const response = await fetch(url)
+        const responseJson = await response.json();
+
+        responseJson.results.forEach((character) => {
+            const card = document.createElement("div")
+            card.style.backgroundImage =
+                `url('https://img.pokemondb.net/artwork/large/${character.name}.jpg')`
+            card.className = "cards"
+
+            const characterNameBG = document.createElement("div")
+            characterNameBG.className = "character-name-bg"
+
+            const characterName = document.createElement("span")
+            characterName.className = "character-name"
+            characterName.innerText = `${character.name}`
+
+            characterNameBG.appendChild(characterName)
+            card.appendChild(characterNameBG)
+
+            card.onclick = () => {
+
+                const modal = document.getElementById("modal")
+                modal.style.visibility = "visible"
+
+                const modalContent = document.getElementById("modal-content")
+                modalContent.innerHTML = ''
+
+                const characterImage = document.createElement("div")
+                characterImage.style.backgroundImage =
+                `url('https://img.pokemondb.net/artwork/large/${character.name}.jpg')`
+                characterImage.className = "character-image"
+
+                const name = document.createElement("span")
+                name.className = "character-details"
+                name.innerText = `Name: ${character.name}`
+
+                const characterType = document.createElement("span")
+                characterType.className = "character-details"
+                characterType.innerText = `Types: ${character.types}`
+
+                const characterId = document.createElement("span")
+                characterId.className = "character-details"
+                characterId.innerText = `National n°: ${character.id}`
+
+                const characterHeight = document.createElement("span")
+                characterHeight.className = "character-details"
+                characterHeight.innerText = `Height: ${character.height}`
+
+                const characterWeight = document.createElement("span")
+                characterWeight.className = "character-details"
+                characterWeight.innerText = `Weight: ${character.weight}`
+
+                const characterAbility = document.createElement("span")
+                characterAbility.className = "character-details"
+                characterAbility.innerText = `Ability: ${character.abilities}`
+
+                modalContent.appendChild(characterImage)
+                modalContent.appendChild(name)
+                modalContent.appendChild(characterType)
+                modalContent.appendChild(characterId)
+                modalContent.appendChild(characterHeight)
+                modalContent.appendChild(characterWeight)
+                modalContent.appendChild(characterAbility)
+
+
+
+
+            }
+
+            mainContent.appendChild(card)
+        });
+
+        const nextButton = document.getElementById('next-button')
+        const backButton = document.getElementById('back-button')
+
+        nextButton.disabled = !responseJson.next
+        backButton.disabled = !responseJson.previous
+
+        backButton.style.visibility = responseJson.previous ? "visible" : "hidden"
+
+        currentPageUrl = url
+
+    } catch (error) {
+        alert('Error loading the pokemon')
+        console.log(error)
+    }
+}
+
+async function loadNextPage() {
+    if (!currentPageUrl) return;
+
+    try {
+        const response = await fetch(currentPageUrl)
+        const responseJson = await response.json()
+
+        await loadPokemon(responseJson.next)
+
+    } catch (error) {
+        console.log('Error loading the next page')
+    }
+}
+
+async function loadPreviousPage() {
+    if (!currentPageUrl) return;
+
+    try {
+        const response = await fetch(currentPageUrl)
+        const responseJson = await response.json()
+
+        await loadPokemon(responseJson.previous)
+
+    } catch (error) {
+        console.log('Error loading the previous page')
+    }
+}
+
+function hideModal() {
+    const modal = document.getElementById("modal")
+    modal.style.visibility = "hidden"
+}
+
+function showModal() {
+    const modal = document.getElementById("modal")
+    modal.style.visibility = "visible"
+}
+

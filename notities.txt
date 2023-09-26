@@ -1,0 +1,11 @@
+Icon voor tab:
+    HTML: => in head -> link favicon -> href naar naam van foto
+
+
+
+flex-wrap: wrap; /ipv van alles letterlijk opzij te zetten gaat het na het einde vanzelf naar devolgende rij.
+
+
+site for the pics van de pokemon:
+
+https://pokemondb.net/pokedex/bulbasaur
