@@ -40,7 +40,11 @@ async function loadPokemon(url) {
             characterNameBG.appendChild(characterName)
             card.appendChild(characterNameBG)
 
-            card.onclick = () => {
+            card.onclick = async () => {
+
+
+                const pokemonResponse = await fetch(url + character.name)
+                const pokemonObject = await pokemonResponse.json();
 
                 const modal = document.getElementById("modal")
                 modal.style.visibility = "visible"
@@ -48,9 +52,10 @@ async function loadPokemon(url) {
                 const modalContent = document.getElementById("modal-content")
                 modalContent.innerHTML = ''
 
+
                 const characterImage = document.createElement("div")
                 characterImage.style.backgroundImage =
-                `url('https://img.pokemondb.net/artwork/large/${character.name}.jpg')`
+                    `url('https://img.pokemondb.net/artwork/large/${character.name}.jpg')`
                 characterImage.className = "character-image"
 
                 const name = document.createElement("span")
@@ -58,24 +63,26 @@ async function loadPokemon(url) {
                 name.innerText = `Name: ${character.name}`
 
                 const characterType = document.createElement("span")
+                const types = pokemonObject.types?.map(obj => obj?.type?.name).join(', ')
                 characterType.className = "character-details"
-                characterType.innerText = `Types: ${character.types}`
+                characterType.innerText = `Types: ${types}`
 
                 const characterId = document.createElement("span")
                 characterId.className = "character-details"
-                characterId.innerText = `National n°: ${character.id}`
+                characterId.innerText = `National n°: ${pokemonObject.id}`
 
                 const characterHeight = document.createElement("span")
                 characterHeight.className = "character-details"
-                characterHeight.innerText = `Height: ${character.height}`
+                characterHeight.innerText = `Height: ${pokemonObject.height/10}m`
 
                 const characterWeight = document.createElement("span")
                 characterWeight.className = "character-details"
-                characterWeight.innerText = `Weight: ${character.weight}`
+                characterWeight.innerText = `Weight: ${pokemonObject.weight/10}kg`
 
                 const characterAbility = document.createElement("span")
+                const ability = pokemonObject.abilities?.map(obj => obj?.ability?.name).join(', ')
                 characterAbility.className = "character-details"
-                characterAbility.innerText = `Ability: ${character.abilities}`
+                characterAbility.innerText = `Ability: ${ability}`
 
                 modalContent.appendChild(characterImage)
                 modalContent.appendChild(name)
