@@ -3,9 +3,19 @@ Icon voor tab:
 
 
 
-flex-wrap: wrap; /ipv van alles letterlijk opzij te zetten gaat het na het einde vanzelf naar devolgende rij.
+flex-wrap: wrap; 
+
+/ipv van alles letterlijk opzij te zetten gaat het na het einde vanzelf naar devolgende rij.
+Dit is ook om als je een kleinere scherm hebt om dit automatisch aan te passen.
+
+
 
 
 site for the pics van de pokemon:
 
 https://pokemondb.net/pokedex/bulbasaur
+
+
+Api gebruikt voor deze project:
+
+https://pokeapi.co
