@@ -73,11 +73,11 @@ async function loadPokemon(url) {
 
                 const characterHeight = document.createElement("span")
                 characterHeight.className = "character-details"
-                characterHeight.innerText = `Height: ${pokemonObject.height/10}m`
+                characterHeight.innerText = `Height: ${pokemonObject.height / 10} m`
 
                 const characterWeight = document.createElement("span")
                 characterWeight.className = "character-details"
-                characterWeight.innerText = `Weight: ${pokemonObject.weight/10}kg`
+                characterWeight.innerText = `Weight: ${pokemonObject.weight / 10} kg`
 
                 const characterAbility = document.createElement("span")
                 const ability = pokemonObject.abilities?.map(obj => obj?.ability?.name).join(', ')
@@ -154,3 +154,37 @@ function showModal() {
     modal.style.visibility = "visible"
 }
 
+// Als je een andere taal in de api hebt en wilt vertalen zoals bv kleuren van ogen:
+
+// function convertEyecolor (eyecolor){
+//     const kleuren = {
+//         blue: "blauw",
+//         brown: "bruin",
+//         green: "groen",
+//         yellow: "geel",
+//         black: "zwart",
+//         pink: "roos",
+//         red: "rood",
+//         orange: "oranje",
+//         unknown: "onbekend"
+//     };
+//     return kleuren[eyecolor.toLowerCase()] || eyecolor;
+// }
+
+// Bij de weight en height van de pokemon hebben we de komma en de eenheiden er zelf boven ingezet.
+// Je kan dit ook zoals hierboven een function maken om dit te veranderen. Zoals hieronder.
+
+// function convertheight(height) {
+//     if (height === "unknown"){
+//     return "onbekend"
+// }
+
+// return (height / 100).toFixed(2);
+// }
+
+// function convertWeight(weight){
+//     if (weight === "unknown") {
+//         return "onbekend"
+//     }
+//     return `${weight} kg`
+// }
