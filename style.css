@@ -41,7 +41,7 @@ header {
 
 .logo-text {
     position: absolute;
-    top: 3,5%;
+    top: 3, 5%;
     left: 46%;
     font-family: 'Sonic Logo', sans-serif;
     font: 1rem;
@@ -186,7 +186,7 @@ footer {
     top: 0;
 }
 
-.modal-content{
+.modal-content {
     width: 20vw;
     height: 70vh;
     background-color: #0d0d0d;
@@ -198,7 +198,7 @@ footer {
     align-items: center;
 }
 
-.character-image{
+.character-image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -207,8 +207,8 @@ footer {
 
 }
 
-.character-details{
-    font-family: 'Sonic Logo' , sans-serif;
+.character-details {
+    font-family: 'Sonic Logo', sans-serif;
     font-size: 1rem;
     font-weight: lighter;
     color: gold;
